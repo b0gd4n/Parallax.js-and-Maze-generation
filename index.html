@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<title>bogdan</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/spinner.css"/>
+	<!-- libs -->
+	<script src="libs/jquery.min.js"></script>
+	<script src="libs/jquery.parallax.min.js"></script>
+	<script src="libs/d3.v3.min.js"></script>
+
+</head>
+<body>
+
+
+	<div id="wait">
+		<div class="outerLoadCircle"></div>
+		<div class="innerLoadCircle"></div>
+	</div> 
+
+	<div id="main">
+		<canvas id="myCanvas"></canvas>
+		<div id="parallaxContainer" class="parallaxContainer">
+			<ul id="scene" class="scene">
+				<li class="layer" data-depth="1.00"><img src="resources/layer1.png"></li>
+				<li class="layer" data-depth="0.80"><img src="resources/layer2.png"></li>
+				<li class="layer" data-depth="0.60"><img src="resources/layer3.png"></li>
+				<li class="layer" data-depth="0.40"><img src="resources/layer4.png"></li>
+				<li class="layer" data-depth="0.20"><img src="resources/layer5.png"></li>
+				<li class="layer" data-depth="0.00"><img src="resources/layer6.png"></li>
+			</ul>
+		</div>
+	</div>
+	
+	<script>
+		// Initialise parallax
+		$('#scene').parallax();
+	</script>
+
+	<!-- Initialise canvas stuff -->
+	<script src="js/canvas.js"></script>
+	<script>
+		if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+			console.log('this is ie...bleah');
+  			$("#wait").remove();
+  			$("#myCanvas").remove();
+  			$("#parallaxContainer").delay(1000).css("display", "block");
+  			$("#parallaxContainer").delay(1000).animate({ opacity: 1 }, 1000);
+  			$("body").append("<p>For the full website, please consider using Chrome or Firefox!</p>");
+		} else console.log('no ie in sight...phew!');
+	</script>
+
+</body>
+</html>
